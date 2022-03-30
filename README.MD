@@ -1,3 +1,16 @@
+
+
+
+
+
+#to initiate  the project, type "npm install" in the terminal
+
+# to start the project, type "npm start" in the terminal
+
+# to test the project, type "npm test" in the terminal
+
+# to build the project, type "npm run build" in the console
+
 <!-- Using Node JS, I designed and coded up a Toy Robot Simulator for Mott MacDonald. My  code  includes unit tests.
 
 
