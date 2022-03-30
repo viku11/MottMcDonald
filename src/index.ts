@@ -10,6 +10,8 @@ import { EOL } from "os";
 
 inquirer.registerPrompt('suggest', require('inquirer-prompt-suggest'));
 
+
+//we first create the table object for our robot. It has 5*5 dimensions
 const table = new Table({
   dimensions: { x: 5, y: 5 },
   isSafeMode: true,
@@ -17,6 +19,8 @@ const table = new Table({
 
 const robot = robotFactory();
 
+/*Since the first instruction should only accept a place command, 
+we seperate initial question from subsequent questions */
 const initialQuestion = [
   {
     type: 'suggest',
@@ -34,6 +38,8 @@ const initialQuestion = [
   },
 ];
 
+
+//This is a list of valid commands. Any other command is not accepted
 const validCommands = ['PLACE', 'MOVE', 'LEFT', 'RIGHT', 'REPORT'];
 const subsequentQuestions = [
   {
@@ -121,7 +127,7 @@ const fileNameQuestions = [
 ];
 
 
-
+//when user chooses a file, we parse the file for commands and execute them
 const askFileName = () => {
   inquirer
     .prompt(fileNameQuestions)
@@ -145,6 +151,8 @@ const askFileName = () => {
       console.log("Error occured: ", err);
     });
 };
+
+//the choose gives User the functionality to choose between a single command or a list of commands in file
 const choose=()=>{
   inquirer.prompt(pickCommandQuestions).then((answers) => {
     if (answers["command"] === "Single command") {
@@ -157,6 +165,7 @@ const choose=()=>{
   });
 }
 
+//this prints the start title
 Logger.printTitle('Mott MacDonald');
 Logger.newLine();
 choose();
